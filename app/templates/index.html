@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Formulário de Pedido</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+      <a href="/form" class="btn btn-success">Adicionar Item ao Pedido</a>
+
+    </div>
+
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+      <form method="get">
+          <input type="text" id="search" name="search" class="form-control" placeholder="Buscar...">
+      </form>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Produto</th>
+                <th scope="col">Unid</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Observação</th>
+                <th scope="col">Data do Pedido</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody id='tabela-produtos'>
+              {% for dbs in db %}
+                <tr>
+                  <td>{{dbs.nome}}</td>
+                  <td>{{dbs.unid}}</td>
+                  <td>{{dbs.qtde}}</td>
+                  <td>{{dbs.obse}}</td>
+                  <td>{{dbs.data}}</td> 
+                <td>
+                  <a href="/view/{{dbs.id}}/" class="btn btn-dark">Visualizar</a>
+                  <a href="/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
+                  <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                </td>
+              </tr>
+
+            {% endfor %}
+            </tbody>
+
+          </table>
+
+
+          <div class="col-8 m-auto pt-3 pb-2 text-center">
+            <a href="/fechapedido" class="btn btn-secondary">Fecha Pedido</a>
+          </div>
+    </div>
+                  
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
+{% endblock %}

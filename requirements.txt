@@ -1,0 +1,11 @@
+django-bootstrap-form
+django-extensions
+django-widget-tweaks
+Django
+pandas
+python-decouple
+pytz
+six
+sqlparse
+xlrd
+xlwt
